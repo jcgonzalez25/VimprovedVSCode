@@ -514,13 +514,6 @@
   "gitlens.views.contributors.files.layout": "list",
   "gitlens.views.contributors.showAllBranches": true,
 
-  // SonarLint Settings
-  "sonarlint.connectedMode.connections.sonarqube": [
-    {
-      "serverUrl": "http://sq-perficientdevops.eastus2.cloudapp.azure.com",
-      "connectionId": "http-sq-perficientdevops-eastus2-cloudapp-azure-com-"
-    }
-  ],
   "sonarlint.focusOnNewCode": true,
 
   // Notebook Settings
@@ -528,9 +521,6 @@
 
   // Diff Editor Settings
   "diffEditor.ignoreTrimWhitespace": false,
-
-  // Notes and Documentation Settings
-  "Notes.notesLocation": "c:\\Users\\jc.gonzalez\\Desktop\\DFIN Notes",
 
   // Remote Development Settings
   "remote.autoForwardPortsSource": "hybrid",
