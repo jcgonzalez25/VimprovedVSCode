@@ -1,6 +1,6 @@
 # VS Code Key Bindings README
 
-This document serves as a comprehensive guide to the custom key bindings configured in Visual Studio Code, covering both Vim extension settings and additional key bindings for project management, code editing, file exploration, terminal control, editor management, and debugging.
+This repos serves as a comprehensive guide to my custom key bindings configured in Visual Studio Code, covering both Vim extension settings and additional key bindings for project management, code editing, file exploration, terminal control, editor management, and debugging.
 
 ## Vim Extension Settings
 
