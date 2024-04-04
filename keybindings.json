@@ -1,1 +1,163 @@
 
+[
+  // Project Management Keybindings
+  {
+    "command": "projectManager.listGitProjects#sideBarGit",
+    "key": "cmd+o"
+  },
+
+  // Code Editing and Navigation Keybindings
+  {
+    "command": "expand_region",
+    "key": "ctrl+=",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "undo_expand_region",
+    "key": "ctrl+-",
+    "when": "editorTextFocus && editorHasSelection"
+  },
+  {
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "key": "ctrl+n",
+    "when": "editorFocus"
+  },
+  {
+    "key": "j",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "k",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen"
+  },
+
+  // File Explorer Keybindings
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "explorer.newFile",
+    "key": "a",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "filesExplorer.copy",
+    "key": "c",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "filesExplorer.paste",
+    "key": "p",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // Terminal Keybindings
+  {
+    "command": "workbench.action.terminal.focusNext",
+    "key": "shift+space t n",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.kill",
+    "key": "shift+space q",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.focusPrevious",
+    "key": "shift+space t shift+n",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "shift+j"
+  },
+  {
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "ctrl+\\",
+    "when": "terminal.active"
+  },
+  {
+    // This appears to remove the default toggle for terminal
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "key": "ctrl+`",
+    "when": "terminal.active"
+  },
+
+  // Editor Management Keybindings
+  {
+    "command": "workbench.action.splitEditor",
+    "key": "cmd+d"
+  },
+  {
+    // This appears to remove the default split editor keybinding
+    "command": "-workbench.action.splitEditor",
+    "key": "cmd+\\"
+  },
+
+  // Save and Undo Keybindings
+  {
+    // This appears to remove the default save keybinding
+    "command": "-workbench.action.files.save",
+    "key": "cmd+s"
+  },
+  {
+    "command": "saveAll",
+    "key": "cmd+s"
+  },
+  {
+    // This appears to remove the default undo keybinding
+    "command": "-undo",
+    "key": "cmd+z"
+  },
+  {
+    // This appears to remove a specific undo keybinding for interactive editor
+    "command": "-interactiveEditor.unstash",
+    "key": "cmd+z",
+    "when": "interactiveEditorHasStashedSession && !editorReadonly"
+  },
+  {
+    "command": "workbench.action.toggleZenMode",
+    "key": "cmd+z"
+  },
+  {
+    // This appears to remove the default Zen Mode toggle keybinding
+    "command": "-workbench.action.toggleZenMode",
+    "key": "cmd+k z"
+  },
+
+  // Selection Keybindings
+  {
+    // This appears to remove the default select all keybinding
+    "command": "-editor.action.selectAll",
+    "key": "cmd+a"
+  },
+  {
+    "command": "editor.action.selectAll",
+    "key": "cmd+a"
+  },
+
+  // Logging and Debugging Keybindings
+  {
+    "command": "turboConsoleLog.displayLogMessage",
+    "key": "cmd+i"
+  },
+  {
+    // This appears to remove a specific keybinding for Turbo Console Log
+    "command": "turboConsoleLog.displayLogMessage",
+    "key": "ctrl+i"
+  }
+]
