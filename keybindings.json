@@ -1,163 +1,397 @@
-
 [
-  // Project Management Keybindings
+  // -------------------------------------------------------------------------
+  // EDITOR NAVIGATION AND FOCUS
+  // -------------------------------------------------------------------------
+
+  // Editor Group Focus
+  { "command": "workbench.action.focusFirstEditorGroup", "key": "shift+space 1" },
+  { "command": "workbench.action.focusSecondEditorGroup", "key": "shift+space 2" },
+  { "command": "workbench.action.focusThirdEditorGroup", "key": "shift+space 3" },
+  { "command": "workbench.action.focusActiveEditorGroup", "key": "shift+space e" },
+  { "command": "workbench.files.action.showActiveFileInExplorer", "key": "shift+space f e" },
+
+  // // Navigation Flow
+  // {
+  //   "command": "workbench.action.focusPreviousGroup",
+  //   "key": "ctrl+h",
+  //   "when": "editorFocus && activeEditorGroupIndex != 1"
+  // },
+  // {
+  //   "command": "workbench.action.focusNextGroup",
+  //   "key": "ctrl+l",
+  //   "when": "editorFocus && !activeEditorGroupLast"
+  // },
+  // {
+  //   "command": "workbench.action.focusSideBar",
+  //   "key": "ctrl+l",
+  //   "when": "editorFocus && activeEditorGroupLast"
+  // },
+  // {
+  //   "command": "workbench.action.focusLastEditorGroup",
+  //   "key": "ctrl+h",
+  //   "when": "sideBarFocus && activeEditorGroupLast"
+  // },
+  // {
+  //   "command": "workbench.action.focusAuxiliaryBar",
+  //   "key": "ctrl+h",
+  //   "when": "editorFocus && activeEditorGroupIndex == 1"
+  // },
+  // {
+  //   "command": "workbench.action.focusFirstEditorGroup",
+  //   "key": "ctrl+l",
+  //   "when": "auxiliaryBarFocus"
+  // },
+
+  // -------------------------------------------------------------------------
+  // PANELS AND SIDEBAR
+  // -------------------------------------------------------------------------
+
+  { "key": "shift+space l", "command": "workbench.action.focusSideBar" },
+  { "key": "shift+space h", "command": "workbench.action.focusAuxiliaryBar" },
+  { "key": "shift+space shift+l", "command": "workbench.action.toggleSidebarVisibility" },
+  { "key": "shift+space shift+H", "command": "workbench.action.toggleAuxiliaryBar" },
+
+  // {
+  //   "command": "workbench.action.focusPanel",
+  //   "key": "ctrl+j",
+  //   "when": "auxiliaryBarFocus || sideBarFocus || editorFocus"
+  // },
   {
-    "command": "projectManager.listGitProjects#sideBarGit",
-    "key": "cmd+o"
+    "command": "workbench.action.togglePanel",
+    "key": "ctrl+k",
+    "when": "panelFocus"
+  },
+  { "command": "workbench.action.terminal.toggleTerminal", "key": "shift+space j" },
+  { "command": "workbench.action.togglePanel", "key": "shift+space shift+j" },
+  {
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeSidebar",
+        "workbench.action.closeAuxiliaryBar",
+        "workbench.action.closePanel",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "key": "shift+space z",
+    "when": "editorFocus"
   },
 
-  // Code Editing and Navigation Keybindings
+  // -------------------------------------------------------------------------
+  // FILE MANAGEMENT
+  // -------------------------------------------------------------------------
+
+  // File Explorer
+  { "command": "workbench.files.action.focusFilesExplorer", "key": "ctrl+e", "when": "editorTextFocus" },
+  { "command": "explorer.newFile", "key": "a", "when": "filesExplorerFocus && !inputFocus" },
+  { "command": "renameFile", "key": "r", "when": "filesExplorerFocus && !inputFocus" },
+  { "command": "filesExplorer.copy", "key": "c", "when": "filesExplorerFocus && !inputFocus" },
+  { "command": "filesExplorer.paste", "key": "p", "when": "filesExplorerFocus && !inputFocus" },
+  { "command": "deleteFile", "key": "d", "when": "filesExplorerFocus && !inputFocus" },
+
+  // File Operations
+  { "key": "shift+space q", "command": "workbench.action.closeActiveEditor" },
+  { "key": "shift+space shift+q", "command": "workbench.action.closeEditorsAndGroup" },
+  { "command": "workbench.action.quickOpen", "key": "space o", "when": "!editorFocus && !inputFocus && !terminalFocus" },
+  { "command": "workbench.action.quickOpen", "key": "shift+space o" },
+  { "command": "workbench.action.files.openFolderInNewWindow", "key": "shift+space shift+o" },
+  { "command": "workbench.action.showCommands", "key": "shift+space shift+;" },
+
+  // -------------------------------------------------------------------------
+  // GIT AND SOURCE CONTROL
+  // -------------------------------------------------------------------------
+
+  { "command": "gitlens.gitCommands", "key": "shift+space g" },
+  { "command": "workbench.scm.focus", "key": "shift+space f c" },
+
+  // Git Views Focus
   {
-    "command": "expand_region",
-    "key": "ctrl+=",
-    "when": "editorTextFocus"
+    "command": "gitlens.views.branches.focus",
+    "key": "shift+space g b"
   },
   {
-    "command": "undo_expand_region",
-    "key": "ctrl+-",
-    "when": "editorTextFocus && editorHasSelection"
+    "command": "gitlens.views.commits.focus",
+    "key": "shift+space g c"
   },
   {
-    "command": "editor.action.addSelectionToNextFindMatch",
-    "key": "ctrl+n",
-    "when": "editorFocus"
+    "command": "gitlens.views.remotes.focus",
+    "key": "shift+space g r"
+  },
+  {
+    "command": "gitlens.views.stashes.focus",
+    "key": "shift+space g s"
+  },
+
+  // Branch Operations
+  {
+    "command": "git.deleteBranch",
+    "key": "d",
+    "when": "sideBarFocus && view.gitlens.views.branches.visible && !inputFocus"
+  },
+  {
+    "command": "gitlens.gitCommands.checkout",
+    "key": "c",
+    "when": "sideBarFocus && view.gitlens.views.branches.visible && !inputFocus"
+  },
+  {
+    "command": "git.branchFrom",
+    "key": "b",
+    "when": "sideBarFocus && view.gitlens.views.branches.visible && !inputFocus"
+  },
+
+  // Commit Operations
+  // {
+  //   "command": "gitlens.gitCommands.revert",
+  //   "key": "r",
+  //   "when": "sideBarFocus && view.gitlens.views.commits.visible && !inputFocus"
+  // },
+
+  // Stash Operations
+  {
+    "command": "gitlens.gitCommands.stash.drop",
+    "key": "d",
+    "when": "sideBarFocus && view.gitlens.views.stashes.visible && !inputFocus"
+  },
+  {
+    "command": "gitlens.graph.stash.rename",
+    "key": "r",
+    "when": "sideBarFocus && view.gitlens.views.stashes.visible && !inputFocus"
+  },
+
+  // Git Diff
+  {
+    "key": "g f",
+    "command": "git.openFile",
+    "when": "isInDiffEditor"
+  },
+
+  // -------------------------------------------------------------------------
+  // SEARCH AND FIND
+  // -------------------------------------------------------------------------
+
+  { "command": "search.action.focusNextSearchResult", "key": "ctrl", "when": "searchInputBoxFocus" },
+  { "command": "editor.action.addSelectionToNextFindMatch", "key": "ctrl+n", "when": "editorFocus" },
+  { "key": "shift+space s", "command": "search.action.openNewEditor" },
+
+  // Search List Navigation
+  {
+    "key": "/",
+    "command": "list.find",
+    "when": "listFocus && listSupportsFind && !inputFocus"
+  },
+  {
+    "key": "/",
+    "command": "problems.action.focusFilter",
+    "when": "focusedView == 'workbench.panel.markers.view'"
   },
   {
     "key": "j",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen"
+    "command": "search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor && !inputBoxFocus"
   },
   {
     "key": "k",
-    "command": "workbench.action.quickOpenNavigatePrevious",
-    "when": "inQuickOpen"
+    "command": "search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor && !inputBoxFocus"
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "hasSearchResult || inSearchEditor && !inputBoxFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "rerunSearchEditorSearch",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "search.action.focusQueryEditorWidget",
+    "when": "inSearchEditor"
   },
 
-  // File Explorer Keybindings
+  // -------------------------------------------------------------------------
+  // DEBUG
+  // -------------------------------------------------------------------------
+
+  // Debug Views
+  { "command": "workbench.debug.action.focusVariablesView", "key": "shift+space d v" },
+  { "command": "workbench.debug.action.focusWatchView", "key": "shift+space d w" },
+  { "command": "workbench.debug.action.focusBreakpointsView", "key": "shift+space d b" },
+  { "command": "workbench.debug.action.focusCallStackView", "key": "shift+space d c" },
+
+  // Debug Start
   {
-    "command": "workbench.files.action.focusFilesExplorer",
-    "key": "ctrl+e",
-    "when": "editorTextFocus"
-  },
-  {
-    "command": "explorer.newFile",
-    "key": "a",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "command": "renameFile",
-    "key": "r",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "command": "filesExplorer.copy",
-    "key": "c",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "command": "filesExplorer.paste",
-    "key": "p",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "command": "deleteFile",
-    "key": "d",
-    "when": "filesExplorerFocus && !inputFocus"
+    "command": "runCommands",
+    "args": { "commands": [ "workbench.debug.action.focusVariablesView", "workbench.action.debug.selectandstart" ] },
+    "key": "shift+space d s"
   },
 
-  // Terminal Keybindings
+  // Debug Controls
+  { "command": "editor.debug.action.selectionToWatch", "key": "shift+w", "when": "debugState != 'inactive' && editorReadonly" },
+  { "command": "workbench.action.debug.continue", "key": "shift+c", "when": "debugState != 'inactive' && editorReadonly" },
+  { "command": "workbench.action.debug.stepOver", "key": "shift+s", "when": "debugState != 'inactive' && editorReadonly" },
+  { "command": "workbench.action.debug.stepInto", "key": "shift+i", "when": "debugState != 'inactive' && editorReadonly" },
+  { "command": "editor.debug.action.showDebugHover", "key": "shift+k", "when": "debugState != 'inactive' && editorReadonly" },
+
+  // -------------------------------------------------------------------------
+  // TERMINAL
+  // -------------------------------------------------------------------------
+
+  // Terminal Operations
+  // {
+  //   "command": "workbench.action.terminal.split",
+  //   "key": "ctrl+s",
+  //   "when": "terminalFocus"
+  // },
+  // {
+  //   "command": "workbench.action.terminal.focusNextPane",
+  //   "key": "ctrl+l",
+  //   "when": "terminalFocus"
+  // },
+  // {
+  //   "command": "workbench.action.terminal.focusPreviousPane",
+  //   "key": "ctrl+h",
+  //   "when": "terminalFocus"
+  // },
+  // {
+  //   "command": "workbench.action.terminal.kill",
+  //   "key": "ctrl+w",
+  //   "when": "terminalFocus"
+  // },
+  // {
+  //   "key": "ctrl+k",
+  //   "when": "terminalFocus",
+  //   "command": "-"
+  // },
+
+  // -------------------------------------------------------------------------
+  // CODE EDITING
+  // -------------------------------------------------------------------------
+
+  { "command": "expand_region", "key": "ctrl+=", "when": "editorTextFocus" },
+  { "command": "undo_expand_region", "key": "ctrl+-", "when": "editorTextFocus && editorHasSelection" },
+  { "key": "shift+j", "when": "codeActionMenuVisible", "command": "selectPrevCodeAction" },
+  { "key": "shift+k", "when": "codeActionMenuVisible", "command": "selectNextCodeAction" },
+
+  // Suggestion Widget
   {
-    "command": "workbench.action.terminal.focusNext",
-    "key": "shift+space t n",
-    "when": "terminalFocus"
+    "key": "j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
-    "command": "workbench.action.terminal.kill",
-    "key": "shift+space q",
-    "when": "terminalFocus"
+    "key": "k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
+
+  // -------------------------------------------------------------------------
+  // AI AND COPILOT
+  // -------------------------------------------------------------------------
+
+  { "key": "shift+space i n", "command": "supermaven.editWithSupermaven" },
+  { "key": "shift+space i t", "command": "workbench.action.chat.history" },
+  { "key": "shift+space i c", "command": "workbench.action.chat.nextCodeBlock" },
+  { "key": "shift+space i shift+n", "command": "workbench.action.chat.newChat" },
+  { "key": "shift+space i shift+c", "command": "workbench.action.chat.previousCodeBlock" },
   {
-    "command": "workbench.action.terminal.focusPrevious",
-    "key": "shift+space t shift+n",
-    "when": "terminalFocus"
-  },
-  {
-    "command": "workbench.action.terminal.toggleTerminal",
-    "key": "shift+j"
-  },
-  {
-    "command": "workbench.action.terminal.toggleTerminal",
     "key": "ctrl+\\",
-    "when": "terminal.active"
+    "command": "inlineChat.start",
+    "when": "inlineChatHasProvider && !editorReadonly"
   },
   {
-    // This appears to remove the default toggle for terminal
-    "command": "-workbench.action.terminal.toggleTerminal",
-    "key": "ctrl+`",
-    "when": "terminal.active"
-  },
-
-  // Editor Management Keybindings
-  {
-    "command": "workbench.action.splitEditor",
-    "key": "cmd+d"
-  },
-  {
-    // This appears to remove the default split editor keybinding
-    "command": "-workbench.action.splitEditor",
-    "key": "cmd+\\"
+    "key": "ctrl+\\",
+    "command": "supermaven.editWithSupermaven"
   },
 
-  // Save and Undo Keybindings
+  // -------------------------------------------------------------------------
+  // UI NAVIGATION
+  // -------------------------------------------------------------------------
+
+  // Breadcrumbs
   {
-    // This appears to remove the default save keybinding
-    "command": "-workbench.action.files.save",
-    "key": "cmd+s"
+    "key": "l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   },
   {
-    "command": "saveAll",
-    "key": "cmd+s"
+    "key": "h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   },
   {
-    // This appears to remove the default undo keybinding
-    "command": "-undo",
-    "key": "cmd+z"
-  },
-  {
-    // This appears to remove a specific undo keybinding for interactive editor
-    "command": "-interactiveEditor.unstash",
-    "key": "cmd+z",
-    "when": "interactiveEditorHasStashedSession && !editorReadonly"
-  },
-  {
-    "command": "workbench.action.toggleZenMode",
-    "key": "cmd+z"
-  },
-  {
-    // This appears to remove the default Zen Mode toggle keybinding
-    "command": "-workbench.action.toggleZenMode",
-    "key": "cmd+k z"
+    "key": "j",
+    "command": "breadcrumbs.selectFocused",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   },
 
-  // Selection Keybindings
+  // Icon Select
   {
-    // This appears to remove the default select all keybinding
-    "command": "-editor.action.selectAll",
-    "key": "cmd+a"
+    "key": "l",
+    "command": "iconSelectBox.focusNext",
+    "when": "iconSelectBoxFocus && iconSelectBoxInputEmpty || iconSelectBoxFocus && !iconSelectBoxInputFocus"
   },
   {
-    "command": "editor.action.selectAll",
-    "key": "cmd+a"
+    "key": "h",
+    "command": "iconSelectBox.focusPrevious",
+    "when": "iconSelectBoxFocus && iconSelectBoxInputEmpty || iconSelectBoxFocus && !iconSelectBoxInputFocus"
   },
 
-  // Logging and Debugging Keybindings
+  // Problems
+  // {
+  //   "key": "ctrl+j",
+  //   "command": "problems.action.focusProblemsFromFilter",
+  //   "when": "problemsFilterFocus"
+  // },
+
+  // Keybindings Editor
+  // {
+  //   "key": "ctrl+j",
+  //   "command": "keybindings.editor.focusKeybindings",
+  //   "when": "inKeybindings && inKeybindingsSearch"
+  // },
   {
-    "command": "turboConsoleLog.displayLogMessage",
-    "key": "cmd+i"
+    "key": "ctrl+k",
+    "command": "keybindings.editor.searchKeybindings",
+    "when": "inKeybindings"
   },
+
+  // Banner
   {
-    // This appears to remove a specific keybinding for Turbo Console Log
-    "command": "turboConsoleLog.displayLogMessage",
-    "key": "ctrl+i"
-  }
+    "key": "l",
+    "command": "workbench.banner.focusNextAction",
+    "when": "bannerFocused"
+  },
+
+  // -------------------------------------------------------------------------
+  // MISCELLANEOUS
+  // -------------------------------------------------------------------------
+
+  // Various Panel Focus
+  { "command": "bookmarksExplorer.focus", "key": "shift+space f m" },
+  { "command": "changes", "key": "shift+space f c", "when": "view" },
+  { "command": "workbench.action.problems.focus", "key": "shift+space f p" },
+  { "command": "workbench.action.terminal.focusTabs", "key": "shift+space f t" },
+  { "command": "liveshare.session.focus", "key": "shift+space f l" },
+
+  // Disabled keybindings
+  { "command": "-interactiveEditor.unstash", "key": "cmd+z", "when": "interactiveEditorHasStashedSession && !editorReadonly" },
+  { "command": "-workbench.action.toggleZenMode", "key": "cmd+k z" },
+  { "command": "-ctrl+f", "key": "problems.action.focusFilter", "when": "focusedView == 'workbench.panel.markers.view'" },
+  { "command": "-ctrl+down", "key": "problems.action.focusProblemsFromFilter", "when": "problemsFilterFocus" },
+  { "command": "-ctrl+down", "key": "keybindings.editor.focusKeybindings", "when": "inKeybindings && inKeybindingsSearch" },
+  { "command": "-ctrl+f", "key": "keybindings.editor.searchKeybindings", "when": "inKeybindings" },
+  { "command": "-shift+f4", "key": "search.action.focusPreviousSearchResult", "when": "hasSearchResult || inSearchEditor" },
+  { "command": "-ctrl+shift+r", "key": "rerunSearchEditorSearch", "when": "inSearchEditor" },
+  { "command": "-escape", "key": "search.action.focusQueryEditorWidget", "when": "inSearchEditor" },
+  // { "command": "-ctrl+j", "key": "workbench.action.togglePanel" },
+  { "command": "-right", "key": "workbench.banner.focusNextAction", "when": "bannerFocused" },
+  { "command": "-ctrl+right", "key": "breadcrumbs.focusNext", "when": "breadcrumbsActive && breadcrumbsVisible" },
+  { "command": "-ctrl+left", "key": "breadcrumbs.focusPrevious", "when": "breadcrumbsActive && breadcrumbsVisible" },
+  { "command": "-down", "key": "breadcrumbs.selectFocused", "when": "breadcrumbsActive && breadcrumbsVisible" },
+  { "command": "-right", "key": "breadcrumbs.focusNext", "when": "breadcrumbsActive && breadcrumbsVisible" },
+  { "command": "-right", "key": "iconSelectBox.focusNext", "when": "iconSelectBoxFocus && iconSelectBoxInputEmpty || iconSelectBoxFocus && !iconSelectBoxInputFocus" },
+  { "command": "-left", "key": "iconSelectBox.focusPrevious", "when": "iconSelectBoxFocus && iconSelectBoxInputEmpty || iconSelectBoxFocus && !iconSelectBoxInputFocus" },
+  { "command": "-ctrl+i", "key": "supermaven.editWithSupermaven" }
 ]
